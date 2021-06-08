@@ -1,7 +1,12 @@
 import './index.html';
 import updateMarkup from "./partials/js/update-markup"
+
 import { alert, defaultModules } from '@pnotify/core';
 import * as PNotifyMobile from '@pnotify/mobile';
+
+// import { alert, defaultModules } from 'node_modules/@pnotify/core/dist/PNotify.js';
+// import * as PNotifyMobile from 'node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
+
 
 const _ = require('lodash');
 
@@ -12,6 +17,7 @@ const refs = {
 }
 
 function fetchCountries(name) {
+   
   const url = `https://restcountries.eu/rest/v2/name/${name}`;
 
   return fetch(url)
@@ -27,4 +33,9 @@ refs.input.addEventListener('input', _.debounce(() => {
     refs.countryContainer.innerHTML = "";
     fetchCountries(name)
   }
-},500))
+}, 500))
+
+
+      
+     
+    
