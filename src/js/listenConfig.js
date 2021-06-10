@@ -1,5 +1,5 @@
 import '../index.html';
-import fetchCountries from './fetchCountries'
+import createMurkup from '../index.js'
 
 const _ = require('lodash');
 
@@ -9,16 +9,19 @@ const refs = {
   countryList: document.querySelector('.js-countryList')
 }
 
+function sameMarkupUpdate() {
+  refs.countryList.innerHTML = "";
+  refs.countryContainer.innerHTML = "";
+}
+
 refs.input.addEventListener('input', _.debounce(() => {
   const name = refs.input.value
   if (name) {
-    refs.countryList.innerHTML = "";
-    refs.countryContainer.innerHTML = "";
-    fetchCountries(name)
+    sameMarkupUpdate()
+    createMurkup(name)
   }
   if (refs.input.value < 1) {
-    refs.countryList.innerHTML = "";
-    refs.countryContainer.innerHTML = "";
+    sameMarkupUpdate()
   }
 }, 500));
 
